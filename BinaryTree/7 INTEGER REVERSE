@@ -1,0 +1,31 @@
+# ** LEET CODE 7 INTEGER REVERSE **
+
+
+class Solution:
+    def reverse(self, x: int) -> int:
+        x = str(x)
+        if len(x) == 0 | int(x) >= 2**32:
+                return 0
+        else:
+            if int(x) < 0:
+                x = list(x)
+                k = x[0]
+                x = x[1:]
+                for i in range(int(len(x)/2)):
+                    x[i],x[-(i+1)] = x[-(i+1)],x[i]
+                x = ''.join(x)
+                x = k+x
+                if int(x)<-(2**31):
+                    return 0
+                else:
+                    return int(x)
+        
+            else:
+                x = list(x)
+                for i in range(int(len(x)/2)):
+                    x[i],x[-(i+1)] = x[-(i+1)],x[i]
+                x = ''.join(x)
+                if int(x)>2**31-2:
+                    return 0
+                else:
+                    return int(x)
